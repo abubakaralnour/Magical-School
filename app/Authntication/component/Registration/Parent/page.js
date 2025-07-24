@@ -16,7 +16,9 @@ const ParentRegister = () => {
     phone: "",
     Relation:"",
     parentID: "", // Will be auto-generated
-     profileImage: ""
+     profileImage: "",
+     userType :"parent",
+     StudentID:""
   });
 
 
@@ -52,10 +54,23 @@ const ParentRegister = () => {
     e.preventDefault();
 
     // Validation
-    if (!parentData.fullname || !parentData.email || !parentData.password) {
+    if (!parentData.fullname || !parentData.email || !parentData.password || !parentData.StudentID ) {
       setMessage({ type: "error", text: "Please fill all required fields." });
       return;
     }
+
+
+ // Fetch students
+  const checkStudentID = JSON.parse(localStorage.getItem("students")) || [];
+  const StudentArray = Array.isArray(checkStudentID) ? checkStudentID : [checkStudentID];
+
+  // Check if StudentID exists in students
+  const ExistsStudentID = StudentArray.some((student) => student.studentID === parentData.StudentID);
+  if (!ExistsStudentID) {
+    setMessage({ type: "error", text: "No student found with this ID." });
+    return;
+  }
+
 
     const existingUsers = JSON.parse(localStorage.getItem("parents")) || [];
     const usersArray = Array.isArray(existingUsers) ? existingUsers : [existingUsers];
@@ -78,14 +93,16 @@ const ParentRegister = () => {
 
       // Reset form
       setParentData({
-           fullname: "",                                                     // fullname: "",
-           email: "",                                  
-             username:"",                   // email: "",
-           password: "",                                                     // password: "",
-           phone: "",
-           Relation:"",
-            profileImage: ""
-
+      fullname: "",
+  email: "",
+  username: "",
+  password: "",
+  phone: "",
+  Relation: "",
+  parentID: "",            // ← Add this
+  profileImage: "",
+  userType: "parent",      // ← And this
+  StudentID: "",
   
       });
 
@@ -93,7 +110,7 @@ const ParentRegister = () => {
 
       setTimeout(() => {
         setMessage(null);
-        router.push("/");
+        router.push("/dashboard/SideDash");
       }, 2000);
     }
   };
@@ -119,13 +136,14 @@ const ParentRegister = () => {
           {message.text}
         </div>
       )}
-       <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
+<div className="bg-gray-800">
+                <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
 
-      <div className="min-h-screen bg-gray-800 text-white px-6 py-10 flex items-center justify-center">
-       
+      <div className="min-h-screen  text-white  flex items-center justify-center">
+
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-2xl bg-neutral-900 p-8 rounded-xl shadow-md"
+          className="w-full max-w-2xl  p-8 rounded-xl shadow-md"
         >
           <h2 className="text-3xl font-bold mb-6 text-center">Parent Registration</h2>
 
@@ -192,10 +210,30 @@ const ParentRegister = () => {
               className="px-4 py-2 bg-black border border-gray-600 rounded-md"
             />
 
-      
 
        
           </div>
+          <div className="w-full mt-4 max-w-full">
+  <label
+    htmlFor="StudentID"
+    className="block mb-2 text-sm font-medium "
+  >
+    Student ID:
+  </label>
+
+  <input
+    id="StudentID"
+    name="StudentID"
+    value={parentData.StudentID}
+    onChange={handleChange}
+    type="text"
+    placeholder="Enter Your Student ID"
+    className="px-4 py-2 bg-black border border-gray-600 rounded-md w-full sm:w-1/2"
+  />
+<p className="block w-full text-sm p-2 rounded ">
+  <strong>Notice:</strong> You should register your child first to receive their Student ID.
+  </p>
+</div>
 {/* Profile Image Upload Section */}
 <div className="mt-6">
   <label className="block text-sm font-medium mb-2">Profile Image</label>
@@ -245,6 +283,7 @@ const ParentRegister = () => {
             </Link>
           </p>
         </form>
+      </div>
       </div>
     </>
   );

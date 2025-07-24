@@ -21,6 +21,7 @@ const StudentRegister = () => {
     parentContact: "",
     address: "",
     profileImage: "", // base64 image
+    userType :"student"
   });
 
   const handleChange = (e) => {
@@ -82,7 +83,7 @@ const StudentRegister = () => {
         gender:"",
         phone: "",
         dateOfBirth: "",
-        studentID: "",
+      
         grade: "",
         class: "",
         parentContact: "",
@@ -94,7 +95,7 @@ const StudentRegister = () => {
 
       setTimeout(() => {
         setMessage(null);
-        router.push("/");
+        router.push("/dashboard/SideDash");
       }, 2000);
     }
   };
@@ -119,12 +120,13 @@ useEffect(() => {
           {message.text}
         </div>
       )}
- <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
+<div className="bg-gray-900">
+   <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
 
-      <div className="min-h-screen bg-black text-white px-6 py-10 flex items-center justify-center">
+      <div className="min-h-screen  text-white flex items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-2xl bg-gray-900 p-8 rounded-xl shadow-md"
+          className="w-full max-w-2xl  p-8 rounded-xl shadow-md"
         >
           <h2 className="text-3xl font-bold mb-6 text-center">Student Registration</h2>
 
@@ -270,7 +272,7 @@ useEffect(() => {
             </Link>
           </p>
         </form>
-      </div>
+      </div></div>
     </>
   );
 };

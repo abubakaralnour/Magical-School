@@ -48,7 +48,7 @@ const Login = () => {
       setMessage({ type: "success", text: `Welcome ${foundUser.fullname}!` });
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard/SideDash");
       }, 1000);
     } else {
       setMessage({ type: "error", text: "Email or password incorrect" });

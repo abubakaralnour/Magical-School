@@ -3,7 +3,6 @@
 import { useState,useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
 const TeacherRegister = () => {
   const router = useRouter();
   const [message, setMessage] = useState(null);
@@ -20,7 +19,8 @@ const TeacherRegister = () => {
     SubjectsTaught: "",
    gender:"",
     profileImage: "", // base64 image
-    address:""
+    address:"",
+    userType :"teacher"
   });
 
   const handleChange = (e) => {
@@ -82,7 +82,7 @@ const TeacherRegister = () => {
            phone: "",
            qualification:"",                                                     // phone: "",
            dateOfBirth: "",                                                     // dateOfBirth: "",
-           teacherID: "", // Will be auto-generated                                                     // teacherID: "",
+        // Will be auto-generated                                                     // teacherID: "",
            grade: "",                                                     // grade: "",
            SubjectsTaught: "",                                                     // class: "",
                      gender:"",                                        // parentContact: "",
@@ -94,7 +94,7 @@ const TeacherRegister = () => {
 
       setTimeout(() => {
         setMessage(null);
-        router.push("/");
+        router.push("/dashboard/SideDash");
       }, 2000);
     }
   };
@@ -121,12 +121,13 @@ const TeacherRegister = () => {
           {message.text}
         </div>
       )}
- <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
+<div className="bg-gray-800 ">
+   <h2 className="text-amber-700 text-2xl "><Link href="/">Home</Link>  </h2>
 
-      <div className="min-h-screen bg-black text-white px-6 py-10 flex items-center justify-center">
+      <div className="min-h-screen  text-white px-6 py-10 flex items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-2xl bg-gray-900 p-8 rounded-xl shadow-md"
+          className="w-full max-w-2xl  p-8 rounded-xl shadow-md"
         >
           <h2 className="text-3xl font-bold mb-6 text-center">Teacher Registration</h2>
 
@@ -289,6 +290,7 @@ const TeacherRegister = () => {
             </Link>
           </p>
         </form>
+      </div>
       </div>
     </>
   );
