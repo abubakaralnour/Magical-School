@@ -6,7 +6,7 @@ const roles = [
   { name: "Student", href: "/Authntication/component/Registration/Student", color: "bg-blue-500", text: "text-white" },
   { name: "Teacher", href: "/Authntication/component/Registration/Teacher", color: "bg-green-500", text: "text-white" },
   { name: "Parent", href: "/Authntication/component/Registration/Parent", color: "bg-yellow-400", text: "text-black" },
-  { name: "Admin", href: "/Authntication/component/Registration/Admin", color: "bg-red-500", text: "text-white" },
+  // { name: "Admin", href: "/Authntication/component/Registration/Admin", color: "bg-red-500", text: "text-white" },
 ];
 
 const RegisterPage = () => {

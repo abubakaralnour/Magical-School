@@ -30,6 +30,7 @@ const RootHome = () => {
     <div className="relative h-screen w-full">
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
+        
         <Image
           src="https://madrasa.org/assets/images/landing/stories-back.jpg"
           alt="background"
@@ -43,7 +44,7 @@ const RootHome = () => {
 
       {/* Centered Content */}
       <div className="flex flex-col pt-32 items-center  h-full text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
+        <h1 className="text-3xl md:text-6xl font-bold mb-6 drop-shadow-lg text-center">
           Welcome to School System
         </h1>
 
