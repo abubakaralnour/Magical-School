@@ -129,7 +129,7 @@ const Login = () => {
 
           <Link href="/Authntication/component/Registration">
             <p className="text-center underline text-blue-400 hover:text-blue-200 cursor-pointer">
-              New to Netmovies? Sign up now.
+              New member? Sign up now.
             </p>
           </Link>
 

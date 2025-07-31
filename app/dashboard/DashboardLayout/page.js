@@ -123,10 +123,10 @@ const DashboardLayout = ({ content }) => {
                 <FaChalkboardTeacher /> My Students
               </Link>
               <Link
-                href="/dashboard/Teacher/CreateAssignment"
+                href="/dashboard/Teacher/Assignment"
                 className="flex items-center gap-2 text-gray-700 hover:text-blue-500"
               >
-                📝 Create Assignment
+                📝Assignment
               </Link>
             </>
           )}
