@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const RootHome = () => {
@@ -58,12 +59,15 @@ const RootHome = () => {
   {/* Centered Content Over Both */}
   <div className="absolute inset-0 z-10 flex items-center justify-center text-white text-center px-4">
     <div>
+     
       <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg ">
         My School
       </h1>
+       <Link href="/Authntication/component/Login">
       <button className="bg-blue-600 px-6 py-3 rounded-full text-lg shadow-md hover:bg-blue-500 transition">
         Sign In
       </button>
+      </Link>
     </div>
   </div>
 
